@@ -1,4 +1,7 @@
+import { BiPhone } from "react-icons/bi";
+import { CiLocationOn } from "react-icons/ci";
 import { FaFacebookF, FaInstagram, FaTwitter } from "react-icons/fa";
+import { MdEmail } from "react-icons/md";
 
 export default function Footer() {
   return (
@@ -25,9 +28,9 @@ export default function Footer() {
               Contact
             </h2>
             <ul className="space-y-2 text-sm">
-              <li>📍 Dhaka, Bangladesh</li>
-              <li>📞 +880 1234-567890</li>
-              <li>✉️ support@qurbanihat.com</li>
+              <li className="flex items-center gap-1"><CiLocationOn /> <span>Dhaka, Bangladesh</span></li>
+              <li className="flex items-center gap-1"><BiPhone /> <span>+880 1234-567890</span></li>
+              <li className="flex items-center gap-1"><MdEmail /> <span>support@qurbanihat.com</span></li>
             </ul>
             </div>
           </div>
