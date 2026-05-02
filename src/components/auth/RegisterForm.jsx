@@ -1,0 +1,116 @@
+"use client";
+
+import {
+  Button,
+  Description,
+  FieldError,
+  Form,
+  Input,
+  Label,
+  TextField,
+} from "@heroui/react";
+import { useState } from "react";
+import { Eye, EyeOff } from "react-icons";
+import { FaEye } from "react-icons/fa";
+import { IoIosEyeOff } from "react-icons/io";
+
+
+const RegisterForm = () => {
+const [showPassword, setShowPassword] = useState(false);
+  return (
+    <>
+      <Form className="flex flex-col gap-5">
+        {/* Name */}
+        <TextField isRequired name="name">
+          <Label className="text-sm font-medium text-slate-800">Name</Label>
+          <Input placeholder="John Doe" className="rounded-xl" />
+          <FieldError />
+        </TextField>
+
+        {/* Image */}
+        <TextField isRequired name="image">
+          <Label className="text-sm font-medium text-slate-800">
+            Profile Image
+          </Label>
+          <Input placeholder="https://example.com/photo.jpg" />
+          <FieldError />
+        </TextField>
+
+        {/* Email */}
+        <TextField
+          isRequired
+          name="email"
+          type="email"
+          validate={(value) => {
+            if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(value)) {
+              return "Invalid email address";
+            }
+            return null;
+          }}
+        >
+          <Label className="text-sm font-medium text-slate-800">Email</Label>
+          <Input placeholder="john@example.com" />
+          <FieldError />
+        </TextField>
+
+        {/* Password */}
+        <TextField
+          isRequired
+          name="password"
+          type={showPassword ? "text" : "password"}
+          validate={(value) => {
+            if (value.length < 8) {
+              return "Minimum 8 characters required";
+            }
+            if (!/[A-Z]/.test(value)) {
+              return "Add at least 1 uppercase letter";
+            }
+            if (!/[0-9]/.test(value)) {
+              return "Add at least 1 number";
+            }
+            return null;
+          }}
+        >
+          <Label className="text-sm font-medium text-slate-800">Password</Label>
+
+          <div className="relative">
+            <Input placeholder="Enter password" className="pr-10" />
+            <button
+              type="button"
+              onClick={() => setShowPassword(!showPassword)}
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-500"
+            >
+              {showPassword ? <IoIosEyeOff size={18} /> : <FaEye size={18} />}
+            </button>
+          </div>
+
+          <Description className="text-xs text-slate-700">
+            8+ chars, 1 uppercase, 1 number
+          </Description>
+          <FieldError />
+        </TextField>
+
+        {/* Confirm Password */}
+        <TextField isRequired name="confirmPassword" type="password">
+          <Label className="text-sm font-medium text-slate-800">
+            Confirm Password
+          </Label>
+          <Input placeholder="Re-enter password" />
+          <FieldError />
+        </TextField>
+
+        {/* Submit */}
+        <Button
+          type="submit"
+          className="mt-2 w-full rounded-xl bg-slate-900 text-white font-medium shadow-md hover:bg-slate-800 transition"
+        >
+          Register
+        </Button>
+      </Form>
+
+   
+    </>
+  );
+};
+
+export default RegisterForm;

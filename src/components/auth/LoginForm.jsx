@@ -1,0 +1,103 @@
+'use client'
+
+import { Check } from "@gravity-ui/icons";
+import {
+  Button,
+  Description,
+  FieldError,
+  Form,
+  Input,
+  Label,
+  TextField,
+} from "@heroui/react";
+import { GrGoogle } from "react-icons/gr";
+
+const LoginForm = () => {
+  return (
+    <>
+      <Form className="flex flex-col gap-5">
+        <TextField
+          isRequired
+          name="email"
+          type="email"
+          validate={(value) => {
+            if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(value)) {
+              return "Please enter a valid email address";
+            }
+            return null;
+          }}
+        >
+          <Label className="mb-1 text-sm font-medium text-slate-800">
+            Email
+          </Label>
+          <Input placeholder="john@example.com" className="rounded-2xl" />
+          <FieldError className="mt-1 text-xs text-red-500" />
+        </TextField>
+
+        <TextField
+          isRequired
+          minLength={8}
+          name="password"
+          type="password"
+          validate={(value) => {
+            if (value.length < 8) {
+              return "Password must be at least 8 characters";
+            }
+            if (!/[A-Z]/.test(value)) {
+              return "Password must contain at least one uppercase letter";
+            }
+            if (!/[0-9]/.test(value)) {
+              return "Password must contain at least one number";
+            }
+            return null;
+          }}
+        >
+          <Label className="mb-1 text-sm font-medium text-slate-800">
+            Password
+          </Label>
+          <Input placeholder="Enter your password" className="rounded-2xl" />
+          <Description className="mt-1 text-xs text-slate-700">
+            Must be at least 8 characters with 1 uppercase and 1 number
+          </Description>
+          <FieldError className="mt-1 text-xs text-red-500" />
+        </TextField>
+
+        <div className="flex gap-3 pt-2">
+          <Button
+            type="submit"
+            className="w-full rounded-2xl bg-slate-900 text-white font-medium shadow-lg transition hover:bg-slate-800"
+          >
+            <Check />
+            Sign In
+          </Button>
+
+          <Button
+            type="reset"
+            variant="secondary"
+            className="w-full rounded-2xl font-medium"
+          >
+            Reset
+          </Button>
+        </div>
+      </Form>
+
+      <div className="my-2 flex items-center gap-3">
+        <div className="h-px flex-1 bg-slate-200" />
+        <span className="text-xs font-medium uppercase tracking-wide text-slate-700">
+          or
+        </span>
+        <div className="h-px flex-1 bg-slate-200" />
+      </div>
+
+      <Button
+        variant="outline"
+        className="w-full rounded-2xl border-slate-300 bg-white font-medium text-slate-700 shadow-sm transition hover:bg-slate-50"
+      >
+        <GrGoogle className="text-lg" />
+        Continue with Google
+      </Button>
+    </>
+  );
+};
+
+export default LoginForm;
