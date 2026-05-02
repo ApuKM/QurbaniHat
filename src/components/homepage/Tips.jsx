@@ -4,7 +4,7 @@ import { TiTick } from "react-icons/ti";
 
 export function Tips() {
   return (
-    <Card className="bg-slate-50">
+    <Card className="bg-(--secondary)/40 p-10">
       <Card.Header>
         <Card.Title className="text-lg">Qurbani Tips</Card.Title>
         <Card.Description className="text-(--text)">

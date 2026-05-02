@@ -12,7 +12,7 @@ import { ImPriceTags } from "react-icons/im";
 const AnimalCard = ({ animal }) => {
   const { id, name, price, weight, location, image, breed } = animal;
   return (
-    <Card className="border rounded-lg hover:shadow-lg transiton-all bg-(--secondary)/40">
+    <Card className="border rounded-lg hover:shadow-lg transiton-all bg-neutral-50">
       <div className="relative w-full aspect-square overflow-hidden">
         <Image
           src={image}
