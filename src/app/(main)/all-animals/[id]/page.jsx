@@ -10,6 +10,7 @@ import {
   FaPaw,
   FaHeart,
 } from "react-icons/fa";
+import BookingForm from "@/components/homepage/BookingForm";
 
 const AnimalDetailsPage = async ({ params }) => {
   const { id } = await params;
@@ -64,27 +65,41 @@ const AnimalDetailsPage = async ({ params }) => {
 
           <div className="mt-6 grid gap-6 md:grid-cols-2">
             <Card className="border border-neutral-200 p-5 shadow-sm">
-              <h2 className="text-lg font-semibold">Overview</h2>
-              <p className="mt-3 text-sm leading-6 text-neutral-600">
-                This animal is listed with full details to help buyers compare
-                breed, weight, age, and price before making a decision.
-              </p>
+              <Card className="border border-neutral-200 p-5 shadow-sm">
+                <h2 className="text-lg font-semibold">Overview</h2>
+                <p className="mt-3 text-sm leading-6 text-neutral-600">
+                  This animal is listed with full details to help buyers compare
+                  breed, weight, age, and price before making a decision.
+                </p>
+              </Card>
+              <Card className="border border-neutral-200 p-5 shadow-sm">
+                <h3 className="text-base font-semibold">Location</h3>
+                <div className="mt-3 flex items-start gap-3 text-sm text-neutral-600">
+                  <FaMapMarkerAlt className="mt-1 shrink-0" />
+                  <p>{animal.location}</p>
+                </div>
+              </Card>
             </Card>
 
             <Card className="border border-neutral-200 p-5 shadow-sm">
-              <h2 className="text-lg font-semibold">Quick Facts</h2>
+              <h3 className="text-base font-semibold">Details</h3>
               <div className="mt-4 space-y-3 text-sm">
                 <Fact icon={<FaPaw />} label="Breed" value={animal.breed} />
-                <Fact icon={<FaTag />} label="Type" value={animal.type} />
+                <Fact
+                  icon={<FaTag />}
+                  label="Category"
+                  value={animal.category}
+                />
+                <Fact icon={<FaHeart />} label="Type" value={animal.type} />
                 <Fact
                   icon={<FaWeightHanging />}
                   label="Weight"
-                  value={animal.weight}
+                  value={`${animal.weight} KG`}
                 />
                 <Fact
                   icon={<FaBirthdayCake />}
                   label="Age"
-                  value={animal.age}
+                  value={`${animal.age} Years`}
                 />
               </div>
             </Card>
@@ -116,37 +131,7 @@ const AnimalDetailsPage = async ({ params }) => {
                 </Button>
               </div>
             </Card>
-
-            <Card className="border border-neutral-200 p-5 shadow-sm">
-              <h3 className="text-base font-semibold">Location</h3>
-              <div className="mt-3 flex items-start gap-3 text-sm text-neutral-600">
-                <FaMapMarkerAlt className="mt-1 shrink-0" />
-                <p>{animal.location}</p>
-              </div>
-            </Card>
-
-            <Card className="border border-neutral-200 p-5 shadow-sm">
-              <h3 className="text-base font-semibold">Details</h3>
-              <div className="mt-4 space-y-3 text-sm">
-                <Fact icon={<FaPaw />} label="Breed" value={animal.breed} />
-                <Fact
-                  icon={<FaTag />}
-                  label="Category"
-                  value={animal.category}
-                />
-                <Fact icon={<FaHeart />} label="Type" value={animal.type} />
-                <Fact
-                  icon={<FaWeightHanging />}
-                  label="Weight"
-                  value={`${animal.weight} KG`}
-                />
-                <Fact
-                  icon={<FaBirthdayCake />}
-                  label="Age"
-                  value={`${animal.age} Years`}
-                />
-              </div>
-            </Card>
+            <BookingForm />
           </div>
         </aside>
       </div>

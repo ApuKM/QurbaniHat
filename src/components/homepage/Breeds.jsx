@@ -3,7 +3,7 @@ import { Card } from "@heroui/react";
 
 export function Breeds() {
   return (
-    <Card className="bg-(--secondary)/40 p-10">
+    <Card className="bg-(--secondary) p-10 shadow-lg hover:shadow-xl">
       <Card.Header>
         <Card.Title className="text-lg">Top Breeds</Card.Title>
         <Card.Description className="text-(--text)">

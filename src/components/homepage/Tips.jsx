@@ -4,7 +4,7 @@ import { TiTick } from "react-icons/ti";
 
 export function Tips() {
   return (
-    <Card className="bg-(--secondary)/40 p-10">
+    <Card className="bg-(--secondary) p-10 shadow-lg hover:shadow-xl">
       <Card.Header>
         <Card.Title className="text-lg">Qurbani Tips</Card.Title>
         <Card.Description className="text-(--text)">
@@ -15,7 +15,7 @@ export function Tips() {
       <Card.Footer>
         <ul className="mt-2">
           {qurbaniTips.map((tip, i) => (
-            <li key={i} className="text-(--text) text-sm flex items-center"><TiTick className="text-(--primary)"/>{tip}</li>
+            <li key={i} className="text-(--text) text-sm flex items-center"><TiTick className=""/>{tip}</li>
           ))}
         </ul>
       </Card.Footer>

@@ -1,6 +1,7 @@
 import AnimalCard from "@/components/homepage/AnimalCard";
 import Banner from "@/components/homepage/Banner";
 import { Breeds } from "@/components/homepage/Breeds";
+import StatsSection from "@/components/homepage/Stats";
 import { Tips } from "@/components/homepage/Tips";
 import { animalData } from "@/lib/data";
 
@@ -11,7 +12,8 @@ export default async function Home() {
     <div className="container mx-auto">
       <div id="main" className="">
         <Banner />
-        <div>
+        <StatsSection />
+        <div className="mt-10 md:mt-16">
           <h1 className="text-2xl text-(--text) font-bold mb-5">
             Featured Animals
           </h1>
@@ -23,7 +25,7 @@ export default async function Home() {
         </div>
         <div className=" mt-10 md:mt-16">
           <h1 className="text-2xl text-(--text) font-bold mb-5">Qurbani Tips & Top Breeds</h1>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 bg-(--secondary) p-6 rounded-lg">
             <Tips />
             <Breeds />
           </div>
