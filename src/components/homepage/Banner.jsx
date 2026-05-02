@@ -13,7 +13,7 @@ const Banner = () => {
       className={`${ubuntu.className} bg-[url('/background.jpg')] bg-cover bg-center h-[50vh] flex items-center justify-center rounded-lg my-10 md:my-16`}
     >
       <div className="w-full h-full rounded-lg bg-black/50 flex items-center ">
-        <div className="max-w-7xl mx-auto px-6 text-white">
+        <div className="max-w-7xl mx-auto py-16 text-white">
           <h1 className="text-4xl md:text-6xl font-bold mb-4 max-w-2xl text-center ">
             Find Healthy <span className="text-(--accent)">Q</span>urbani Animals with Ease
           </h1>

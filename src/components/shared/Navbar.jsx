@@ -3,12 +3,9 @@
 import { Button } from "@heroui/react";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
-import { FaHamburger } from "react-icons/fa";
+import { BasicDrawer } from "./Drawer";
 
 const Navbar = () => {
-  const [open, setOpen] = useState(false);
-
   return (
     <div className="border-b px-3">
       <nav className="flex justify-between items-center py-3 max-w-7xl mx-auto w-full">
@@ -42,29 +39,10 @@ const Navbar = () => {
             </Link>
           </li>
         </ul>
-        <button
-          className="md:hidden text-xl text-(--primary)"
-          onClick={() => setOpen(!open)}
-        >
-          <FaHamburger />
-        </button>
-      </nav>
-      {open && (
-        <div className="md:hidden flex flex-col gap-4 pb-4 font-medium">
-          <Link href="/">Home</Link>
-          <Link href="/all-animals">All Animals</Link>
-
-          <div className="flex items-center gap-4">
-            <Link href="/signup">
-              <Button className=" bg-(--accent) text-white">SignUp</Button>
-            </Link>
-
-            <Link href="/signin">
-              <Button className="bg-(--accent) text-white">SignIn</Button>
-            </Link>
-          </div>
+        <div className="md:hidden">
+          <BasicDrawer />
         </div>
-      )}
+      </nav>
     </div>
   );
 };
