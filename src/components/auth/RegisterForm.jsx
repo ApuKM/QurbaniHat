@@ -1,5 +1,6 @@
 "use client";
 
+import { authClient } from "@/lib/auth-client";
 import {
   Button,
   Description,
@@ -9,17 +10,37 @@ import {
   Label,
   TextField,
 } from "@heroui/react";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { Eye, EyeOff } from "react-icons";
 import { FaEye } from "react-icons/fa";
 import { IoIosEyeOff } from "react-icons/io";
 
 
 const RegisterForm = () => {
 const [showPassword, setShowPassword] = useState(false);
+const router = useRouter();
+const handleRegister = async(e) => {
+  e.preventDefault()
+  const name = e.target.name.value;
+  const image = e.target.image.value;
+  const password = e.target.password.value;
+  const email = e.target.email.value;
+
+  const {data, error} = await authClient.signUp.email({
+    name,
+    email,
+    password,
+    image,
+    callbackURL: "/"
+  })
+  console.log({data, error})
+  if(!error){
+    router.push("/")
+  }
+}
   return (
     <>
-      <Form className="flex flex-col gap-5">
+      <Form onSubmit={handleRegister} className="flex flex-col gap-5">
         {/* Name */}
         <TextField isRequired name="name">
           <Label className="text-sm font-medium text-slate-800">Name</Label>
@@ -74,28 +95,19 @@ const [showPassword, setShowPassword] = useState(false);
           <Label className="text-sm font-medium text-slate-800">Password</Label>
 
           <div className="relative">
-            <Input placeholder="Enter password" className="pr-10" />
+            <Input placeholder="Enter password" className="w-full" />
             <button
               type="button"
               onClick={() => setShowPassword(!showPassword)}
               className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-500"
             >
-              {showPassword ? <IoIosEyeOff size={18} /> : <FaEye size={18} />}
+              {showPassword ? <IoIosEyeOff size={15} /> : <FaEye size={15} />}
             </button>
           </div>
 
           <Description className="text-xs text-slate-700">
             8+ chars, 1 uppercase, 1 number
           </Description>
-          <FieldError />
-        </TextField>
-
-        {/* Confirm Password */}
-        <TextField isRequired name="confirmPassword" type="password">
-          <Label className="text-sm font-medium text-slate-800">
-            Confirm Password
-          </Label>
-          <Input placeholder="Re-enter password" />
           <FieldError />
         </TextField>
 

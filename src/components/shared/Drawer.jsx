@@ -7,9 +7,9 @@ export function BasicDrawer() {
     <Drawer>
       {/* Trigger Button */}
       <Drawer.Trigger asChild>
-        <Button className="bg-transparent text-(--accent) text-xl">
+        <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-transparent text-(--accent) text-xl cursor-pointer">
           <FaHamburger />
-        </Button>
+        </span>
       </Drawer.Trigger>
 
       {/* Drawer */}

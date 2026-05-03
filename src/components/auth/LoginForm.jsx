@@ -1,5 +1,6 @@
-'use client'
+"use client";
 
+import { authClient } from "@/lib/auth-client";
 import { Check } from "@gravity-ui/icons";
 import {
   Button,
@@ -10,12 +11,40 @@ import {
   Label,
   TextField,
 } from "@heroui/react";
+import { useRouter } from "next/navigation";
 import { GrGoogle } from "react-icons/gr";
+import { FaEye } from "react-icons/fa";
+import { IoIosEyeOff } from "react-icons/io";
+import { useState } from "react";
 
 const LoginForm = () => {
+  const router = useRouter();
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+
+    const { data, error } = await authClient.signIn.email({
+      email,
+      password,
+      callbackURL: "/",
+    });
+    console.log(data, error);
+
+    if (!error) {
+      router.push("/");
+    }
+  };
+  const handlGoogleSignIn = async () => {
+    await authClient.signIn.social({
+      provider: "google",
+    });
+  };
   return (
     <>
-      <Form className="flex flex-col gap-5">
+      <Form onSubmit={handleLogin} className="flex flex-col gap-5">
         <TextField
           isRequired
           name="email"
@@ -30,7 +59,7 @@ const LoginForm = () => {
           <Label className="mb-1 text-sm font-medium text-slate-800">
             Email
           </Label>
-          <Input placeholder="john@example.com" className="rounded-2xl" />
+          <Input placeholder="john@example.com" className="rounded-2xl text-sm" />
           <FieldError className="mt-1 text-xs text-red-500" />
         </TextField>
 
@@ -38,7 +67,7 @@ const LoginForm = () => {
           isRequired
           minLength={8}
           name="password"
-          type="password"
+          type={showPassword ? "text" : "password"}
           validate={(value) => {
             if (value.length < 8) {
               return "Password must be at least 8 characters";
@@ -55,7 +84,16 @@ const LoginForm = () => {
           <Label className="mb-1 text-sm font-medium text-slate-800">
             Password
           </Label>
-          <Input placeholder="Enter your password" className="rounded-2xl" />
+          <div className="relative">
+            <Input placeholder="Enter password" className="w-full rounded-2xl text-sm" />
+            <button
+              type="button"
+              onClick={() => setShowPassword(!showPassword)}
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-500"
+            >
+              {showPassword ? <IoIosEyeOff size={15} /> : <FaEye size={15} />}
+            </button>
+          </div>
           <Description className="mt-1 text-xs text-slate-700">
             Must be at least 8 characters with 1 uppercase and 1 number
           </Description>
@@ -90,6 +128,7 @@ const LoginForm = () => {
       </div>
 
       <Button
+        onClick={handlGoogleSignIn}
         variant="outline"
         className="w-full rounded-2xl border-slate-300 bg-white font-medium text-slate-700 shadow-sm transition hover:bg-slate-50"
       >
