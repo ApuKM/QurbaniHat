@@ -1,11 +1,26 @@
 "use client";
 
-import { Button } from "@heroui/react";
 import Image from "next/image";
 import Link from "next/link";
 import { BasicDrawer } from "./Drawer";
+import { useRouter } from "next/navigation";
+import { authClient } from "@/lib/auth-client";
+
+import NavbarButtons from "./NavbarButtons";
 
 const Navbar = () => {
+  const router = useRouter();
+  const { data: session } = authClient.useSession();
+  const user = session?.user;
+  const handleSignOut = async () => {
+    await authClient.signOut({
+      fetchOptions: {
+        onSuccess: () => {
+          router.push("/");
+        },
+      },
+    });
+  };
   return (
     <div className="border-b px-3">
       <nav className="flex justify-between items-center py-3 max-w-7xl mx-auto w-full">
@@ -23,24 +38,11 @@ const Navbar = () => {
             <Link href="/all-animals">All Animals</Link>
           </li>
         </ul>
-        <ul className="hidden md:flex items-center gap-2 text-sm">
-          <li>
-            <Link href="/signup">
-              <Button size="sm" className="bg-(--accent) text-white">
-                SignUp
-              </Button>
-            </Link>
-          </li>
-          <li>
-            <Link href="/signin">
-              <Button size="sm" className="bg-(--accent) text-white">
-                SignIn
-              </Button>
-            </Link>
-          </li>
-        </ul>
+          <div className="hidden md:block">
+        <NavbarButtons user={user} handleSignOut={handleSignOut}/>
+    </div>
         <div className="md:hidden">
-          <BasicDrawer />
+          <BasicDrawer user={user} handleSignOut={handleSignOut}/>
         </div>
       </nav>
     </div>

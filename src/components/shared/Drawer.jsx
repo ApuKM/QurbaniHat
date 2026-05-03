@@ -1,8 +1,9 @@
 import { Button, Drawer } from "@heroui/react";
 import { FaHamburger } from "react-icons/fa";
 import Link from "next/link";
+import NavbarButtons from "./NavbarButtons";
 
-export function BasicDrawer() {
+export function BasicDrawer({user, handleSignOut}) {
   return (
     <Drawer>
       {/* Trigger Button */}
@@ -33,8 +34,8 @@ export function BasicDrawer() {
             </Drawer.Body>
 
             {/* Footer */}
-            <Drawer.Footer className="mt-auto flex flex-col gap-3">
-              <Button
+            <Drawer.Footer className="mt-auto flex flex-col gap-3 border">
+              {/* <Button
                 slot="close"
                 className="w-full bg-(--accent) text-white"
               >
@@ -45,7 +46,8 @@ export function BasicDrawer() {
                 className="w-full bg-(--accent) text-white"
               >
                 Sign Up
-              </Button>
+              </Button> */}
+              <NavbarButtons user={user} handleSignOut={handleSignOut}/>
             </Drawer.Footer>
 
           </Drawer.Dialog>
