@@ -35,7 +35,7 @@ const handleRegister = async(e) => {
   })
   console.log({data, error})
   if(!error){
-    router.push("/")
+    router.push("/signin")
   }
 }
   return (

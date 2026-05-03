@@ -1,6 +1,7 @@
 import LoginForm from "@/components/auth/LoginForm";
 import { Check } from "@gravity-ui/icons";
 import { Card } from "@heroui/react";
+import Link from "next/link";
 import React from "react";
 
 const page = () => {
@@ -16,6 +17,15 @@ const page = () => {
           </p>
         </div>
         <LoginForm />
+        <p className="text-center text-sm text-slate-700 mt-6">
+          Don’t have an account?{" "}
+          <Link
+            href={"/signup"}
+            className="text-slate-900 font-medium cursor-pointer hover:underline"
+          >
+            Register
+          </Link>
+        </p>
       </Card>
     </div>
   );

@@ -37,12 +37,17 @@ const Navbar = () => {
           <li>
             <Link href="/all-animals">All Animals</Link>
           </li>
+          {user && (
+            <li>
+              <Link href="/my-profile">My Profile</Link>
+            </li>
+          )}
         </ul>
-          <div className="hidden md:block">
-        <NavbarButtons user={user} handleSignOut={handleSignOut}/>
-    </div>
+        <div className="hidden md:block">
+          <NavbarButtons user={user} handleSignOut={handleSignOut} />
+        </div>
         <div className="md:hidden">
-          <BasicDrawer user={user} handleSignOut={handleSignOut}/>
+          <BasicDrawer user={user} handleSignOut={handleSignOut} />
         </div>
       </nav>
     </div>
