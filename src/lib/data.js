@@ -1,6 +1,5 @@
 export const animalData = async() => {
-    const res = await fetch(`${process.env.BETTER_AUTH_URL}/data.json`)
-    return await res.json();
+    return data;
 }
 
 // export const getAnimalById = async(id) => {
