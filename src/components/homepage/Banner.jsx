@@ -1,3 +1,4 @@
+
 import { Button } from "@heroui/react";
 import { Ubuntu } from "next/font/google";
 import Link from "next/link";
@@ -10,12 +11,13 @@ const ubuntu = Ubuntu({
 const Banner = () => {
   return (
     <div
-      className={`${ubuntu.className} bg-[url('/background.jpg')] bg-cover bg-center h-[50vh] flex items-center justify-center rounded-lg my-10 md:my-16`}
+      className={`${ubuntu.className} bg-[url('/background.jpg')] bg-cover bg-center h-[50vh] flex items-center justify-center rounded-lg my-10 md:my-16 `}
     >
       <div className="w-full h-full rounded-lg bg-black/50 flex items-center ">
         <div className="max-w-7xl mx-auto py-16 text-white">
           <h1 className="text-4xl md:text-6xl font-bold mb-4 max-w-2xl text-center ">
-            Find Healthy <span className="text-(--accent)">Q</span>urbani Animals with Ease
+            Find Healthy <span className="text-(--accent)">Q</span>urbani
+            Animals with Ease
           </h1>
           <p className="text-lg md:text-xl mb-6 max-w-2xl text-gray-200 text-center ">
             Browse verified cows, goats, sheep, and buffalo from trusted sellers

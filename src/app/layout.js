@@ -1,6 +1,7 @@
 import { Urbanist } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "react-hot-toast";
+import "animate.css";
 
 export const urbanist = Urbanist({
   subsets: ["latin"],

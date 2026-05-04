@@ -23,7 +23,7 @@ export default async function Home() {
             ))}
           </div>
         </div>
-        <div className=" mt-10 md:mt-16">
+        <div className=" mt-10 md:mt-16 animate__animated animate__fadeInUp animate__delay-2s">
           <h1 className="text-2xl text-(--text) font-bold mb-5">Qurbani Tips & Top Breeds</h1>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 bg-(--secondary) p-6 rounded-lg">
             <Tips />

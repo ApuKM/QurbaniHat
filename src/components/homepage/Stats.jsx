@@ -32,7 +32,7 @@ const stats = [
 
 const StatsSection = () => {
   return (
-    <section className="bg-green-50 py-16 px-4 rounded-lg">
+    <section className="bg-green-50 py-16 px-4 rounded-lg animate__animated animate__fadeInUp animate__delay-2s">
       <div className="max-w-7xl mx-auto text-center mb-10">
         <h2 className="text-3xl font-bold text-slate-900">
           Our Impact in Qurbani Market
