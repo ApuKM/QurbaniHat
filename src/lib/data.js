@@ -1,5 +1,6 @@
 export const animalData = async() => {
-    return data;
+    const res = await fetch("https://qurbanihat-server-1.onrender.com/animals");
+    return res.json();
 }
 
 // export const getAnimalById = async(id) => {
