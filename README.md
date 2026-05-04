@@ -4,7 +4,7 @@
 QurbaniHat is a modern livestock marketplace where users can explore animals for Qurbani such as cows and goats. Users can view animal details and place bookings after authentication.
 
 ## Live URL
-.....
+(https://qurbani-hat-five.vercel.app/)
 
 ## Key Features
 - Modern and responsive design
