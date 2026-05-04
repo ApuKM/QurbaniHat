@@ -15,7 +15,7 @@ import BookingForm from "@/components/homepage/BookingForm";
 export const generateMetadata = async ({ params }) => {
   const { id } = await params;
   const animals = await animalData();
-  const animal = animals.find((a) => a.id === Number(id))
+ const animal = animals.find((item) => Number(item.id) === Number(id));
   return {
     title: animal.name,
     description: animal.description,
@@ -25,7 +25,7 @@ export const generateMetadata = async ({ params }) => {
 const AnimalDetailsPage = async ({ params }) => {
   const { id } = await params;
   const animals = await animalData();
-  const animal = animals.find((item) => item.id === Number(id));
+ const animal = animals.find((item) => Number(item.id) === Number(id));
 
   if (!animal) {
     notFound();
