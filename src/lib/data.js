@@ -3,6 +3,11 @@ export const animalData = async() => {
     return await res.json();
 }
 
+// export const getAnimalById = async(id) => {
+//   const res = await fetch(`http://localhost:3000/data.json/${id}`)
+//   return await res.json();
+// }
+
 export const qurbaniTips = [
   "Select a healthy and active animal",
   "Ensure it meets Islamic requirements",

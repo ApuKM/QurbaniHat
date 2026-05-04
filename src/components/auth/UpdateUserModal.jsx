@@ -3,6 +3,7 @@
 import { authClient } from "@/lib/auth-client";
 import { Button, Input, Label, Modal, Surface, TextField } from "@heroui/react";
 import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 import { BiEdit, BiUser } from "react-icons/bi";
 
 export function UpdateUserModal() {
@@ -18,6 +19,7 @@ export function UpdateUserModal() {
         image,
       },
       router.refresh(),
+      toast.success("Profile updated successfully")
     );
   };
   return (

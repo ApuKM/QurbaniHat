@@ -1,5 +1,6 @@
 import { Urbanist } from "next/font/google";
 import "./globals.css";
+import { Toaster } from "react-hot-toast";
 
 export const urbanist = Urbanist({
   subsets: ["latin"],
@@ -12,11 +13,11 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html
-      lang="en"
-      className={`${urbanist.className} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col">{children}</body>
+    <html lang="en" className={`${urbanist.className} h-full antialiased`}>
+      <body className="min-h-full flex flex-col">
+        {children}
+        <Toaster />
+      </body>
     </html>
   );
 }

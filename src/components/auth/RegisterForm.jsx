@@ -12,6 +12,7 @@ import {
 } from "@heroui/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import toast from "react-hot-toast";
 import { FaEye } from "react-icons/fa";
 import { IoIosEyeOff } from "react-icons/io";
 
@@ -34,7 +35,11 @@ const handleRegister = async(e) => {
     callbackURL: "/"
   })
   console.log({data, error})
+  if (error) {
+        toast.error(`${error.message}. Please try again.`);
+      }
   if(!error){
+    toast.success("Sign up successful")
     router.push("/signin")
   }
 }

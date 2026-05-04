@@ -16,6 +16,7 @@ import { GrGoogle } from "react-icons/gr";
 import { FaEye } from "react-icons/fa";
 import { IoIosEyeOff } from "react-icons/io";
 import { useState } from "react";
+import toast from "react-hot-toast";
 
 const LoginForm = () => {
   const router = useRouter();
@@ -33,7 +34,12 @@ const LoginForm = () => {
     });
     console.log(data, error);
 
+    if (error) {
+      toast.error(`${error.message}. Please try again.`);
+    }
+
     if (!error) {
+      toast.success("Login successful");
       router.push("/");
     }
   };
@@ -59,7 +65,10 @@ const LoginForm = () => {
           <Label className="mb-1 text-sm font-medium text-slate-800">
             Email
           </Label>
-          <Input placeholder="john@example.com" className="rounded-2xl text-sm" />
+          <Input
+            placeholder="john@example.com"
+            className="rounded-2xl text-sm"
+          />
           <FieldError className="mt-1 text-xs text-red-500" />
         </TextField>
 
@@ -85,7 +94,10 @@ const LoginForm = () => {
             Password
           </Label>
           <div className="relative">
-            <Input placeholder="Enter password" className="w-full rounded-2xl text-sm" />
+            <Input
+              placeholder="Enter password"
+              className="w-full rounded-2xl text-sm"
+            />
             <button
               type="button"
               onClick={() => setShowPassword(!showPassword)}

@@ -12,6 +12,16 @@ import {
 } from "react-icons/fa";
 import BookingForm from "@/components/homepage/BookingForm";
 
+export const generateMetadata = async ({ params }) => {
+  const { id } = await params;
+  const animals = await animalData();
+  const animal = animals.find((a) => a.id === Number(id))
+  return {
+    title: animal.name,
+    description: animal.description,
+  };
+};
+
 const AnimalDetailsPage = async ({ params }) => {
   const { id } = await params;
   const animals = await animalData();
